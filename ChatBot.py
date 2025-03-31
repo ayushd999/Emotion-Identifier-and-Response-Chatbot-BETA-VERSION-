@@ -7,7 +7,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 import os
 import time
-import pandas as pd
 import random
 df = pd.read_csv(r"chatbot_sentiment_dataset.csv")
 encoder = LabelEncoder()
