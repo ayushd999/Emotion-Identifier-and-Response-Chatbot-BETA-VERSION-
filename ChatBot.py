@@ -9,7 +9,7 @@ import os
 import time
 import pandas as pd
 import random
-df = pd.read_csv(r"C:\Users\Ayush Das\Downloads\chatbot_sentiment_dataset.csv")
+df = pd.read_csv(r"chatbot_sentiment_dataset.csv")
 encoder = LabelEncoder()
 df['Sentiment'].replace({'neutral' : 0 , 'negative' : 0 , 'positive' : 1 } , inplace = True)
 vector = TfidfVectorizer(stop_words = "english" , max_features=5000)
@@ -21,13 +21,13 @@ xtrain , xtest , ytrain , ytest = train_test_split(x , y , train_size=0.8 , test
 model.fit(xtrain,ytrain)
 model.predict(xtest)
 model.score(xtest,ytest)
-df1 = pd.read_csv(r"C:\Users\Ayush Das\Desktop\User_Messages.csv")
+df1 = pd.read_csv(r"User_Messages.csv")
 w = df1["User_Messages"]
 w = vector.transform(w)
 response = model.predict(w)
-pos = pd.read_csv(r"C:\Users\Ayush Das\Downloads\positive.csv")
-neg = pd.read_csv(r"C:\Users\Ayush Das\Downloads\negative.csv")
-file_path = r"C:\Users\Ayush Das\Desktop\User_Messages.csv")
+pos = pd.read_csv(r"positive.csv")
+neg = pd.read_csv(r"negative.csv")
+file_path = r"User_Messages.csv"
 while True:
     while os.path.getsize(file_path) == 0:
         time.sleep(1)
